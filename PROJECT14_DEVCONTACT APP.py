@@ -59,8 +59,8 @@ while(True):
         if(usr_choice == '1'):
             name = str(input("      Enter the Name of Contact You want to Search     \n\t"))
             name=name.upper()
-            index = name_list.index(name)
             if(name in  name_list):
+                index = name_list.index(name)
                 os.system('cls')
                 print("---     ", name_list[index], " : ", contact_list[index], "     ---\n")
                 time.sleep(1)
@@ -68,20 +68,30 @@ while(True):
             else:
                 os.system('cls')
                 print("\n     --------------     Sorry, Name Not Found     ---------------\n")
-                time.sleep(0.25)
+                time.sleep(0.50)
                 os.system('cls')
         elif(usr_choice == '2'):
-            contact = int(input("      Enter the Contact Number of Contact You want to Search     \n\t"))
+            while True:
+                contact = input("      Enter the Contact Number of Contact You want to Search     \n\t")
+                if contact.isnumeric():
+                    contact=int(contact)
+                    break
+                else:
+                    os.system('cls')
+                    print("\n     --------------     Invalid Contact Number Entered     ---------------\n")
+                    time.sleep(0.50)
+                    os.system('cls')
+            
             if(contact in  contact_list):
                 index = contact_list.index(contact)
                 os.system('cls')
                 print("---     ", name_list[index], " : ", contact_list[index], "     ---\n")
-                time.sleep('3')
+                time.sleep(3)
                 os.system('cls')
             else:
                 os.system('cls')
                 print("\n     --------------     Sorry, Contact Not Found     ---------------\n")
-                time.sleep(0.25)
+                time.sleep(0.50)
                 os.system('cls')
         else:
             os.system('cls')
